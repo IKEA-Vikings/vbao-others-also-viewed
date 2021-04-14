@@ -8,9 +8,10 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node ./server/database/seed.js",
     "build": "webpack --watch",
-    "start": "nodemon ./server/app.js"
+    "seed": "node ./server/database/seed.js",
+    "start": "nodemon ./server/app.js",
+    "test": "jest --no-cache -u --collect-coverage"
   },
   "dependencies": {
     "axios": "^0.21.1",
