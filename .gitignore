@@ -24,3 +24,9 @@ coverage
 build/
 dist/
 
+# Other files
+bundle.js
+*.env
+*.sh
+*.cer
+*.pem
