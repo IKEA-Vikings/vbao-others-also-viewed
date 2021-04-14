@@ -3,16 +3,18 @@ const generateSeedData = () => {
   let data = [];
 
   for (let id = 1; id <= 100; id++) {
-    let itemsAlsoViewed = [];
+    let doc = {};
+    doc.id = id;
+    doc.similar_items = [];
     const numItemsAlsoViewed = random(1, 20);
     for (let i = 0; i < numItemsAlsoViewed; i++) {
       let itemID = random(1, 100);
       while (itemID === i) {
         itemID = random(1, 100);
       }
-      itemsAlsoViewed.push(itemID);
+      doc.similar_items.push(itemID);
     }
-    data.push(itemsAlsoViewed);
+    data.push(doc);
   }
 
   return data;
