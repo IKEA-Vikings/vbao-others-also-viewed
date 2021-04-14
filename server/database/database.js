@@ -1,10 +1,10 @@
-require('dotenv');
+require('dotenv').config();
 const mongoose = require('mongoose');
 
-mongoose.connect(`mongodb://${process.env.DATABASE}:${process.env.DATABASE_PORT}/ikea`, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(`mongodb://${process.env.DATABASE}/ikea`, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log(`The database has connected on mongodb://${process.env.DATABASE}:${process.env.DATABASE_PORT}`);
+  console.log(`The database has connected on mongodb://${process.env.DATABASE}/ikea`);
 });
