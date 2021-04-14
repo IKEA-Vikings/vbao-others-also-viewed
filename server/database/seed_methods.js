@@ -6,7 +6,10 @@ const generateSeedData = () => {
     let itemsAlsoViewed = [];
     const numItemsAlsoViewed = random(1, 20);
     for (let i = 0; i < numItemsAlsoViewed; i++) {
-      const itemID = random(1, 100);
+      let itemID = random(1, 100);
+      while (itemID === i) {
+        itemID = random(1, 100);
+      }
       itemsAlsoViewed.push(itemID);
     }
     data.push(itemsAlsoViewed);
