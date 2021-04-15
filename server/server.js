@@ -18,7 +18,7 @@ app.get('/:id', (req, res) => {
 app.get('/similar-products-by-views/:id', (req, res) => {
   getSimilarItemsByViews(req.params.id)
     .then((result) => {
-      res.rend(result);
+      res.send(result);
     })
     .catch((err) => console.error('Unable to get similar items by views: ', err));
 });
