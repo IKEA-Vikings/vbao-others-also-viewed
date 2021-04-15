@@ -9,7 +9,7 @@ const generateSeedData = () => {
     const numItemsAlsoViewed = random(1, 20);
     for (let i = 0; i < numItemsAlsoViewed; i++) {
       let itemID = random(1, 100);
-      while (itemID === i) {
+      while (itemID === i || doc.similar_items.indexOf(itemID) === 1) {
         itemID = random(1, 100);
       }
       doc.similar_items.push(itemID);
