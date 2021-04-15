@@ -35,7 +35,7 @@
   "scripts": {
     "build": "webpack --watch",
     "seed": "node ./server/database/seed.js",
-    "start": "nodemon ./server/server.js",
+    "start": "nodemon ./server/app.js",
     "test": "jest --no-cache -u --collect-coverage"
   },
   "dependencies": {
