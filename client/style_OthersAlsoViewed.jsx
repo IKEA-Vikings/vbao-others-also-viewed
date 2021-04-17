@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {FONT, GRAY, EGGSHELL, WHITE, OVERLAY, BLUE, FONT_SM, FONT_MED, FONT_LG} from './style_constants.js';
+import {FONT, GRAY2, GRAY3, WHITE, OVERLAY, BLUE, FONT_SM, FONT_MED, FONT_LG} from './style_constants.js';
 
 export const Container = styled.div`
   font-family: ${FONT};
@@ -9,6 +9,7 @@ export const Container = styled.div`
 
 export const Header = styled.h1`
   font-size: 1.5rem;
+  margin-bottom: 30px;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -17,4 +18,18 @@ export const ButtonWrapper = styled.div`
   display: flex;
   width: 98vw;
   justify-content: space-between;
+`;
+
+export const Line = styled.div`
+  display: flex;
+  margin-top: 50px;
+`;
+
+export const TrackingLine = styled.div`
+  border-bottom: solid 2px ${GRAY2};
+  width: 100%;
+
+  &.currentPage {
+    border-color: ${GRAY3};
+  }
 `;

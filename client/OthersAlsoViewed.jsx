@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
-import {Container, Header, ButtonWrapper} from './style_OthersAlsoViewed.jsx';
+import {Container, Header, ButtonWrapper, TrackingLine, Line} from './style_OthersAlsoViewed.jsx';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faChevronCircleRight, faChevronCircleLeft} from '@fortawesome/free-solid-svg-icons';
@@ -153,9 +153,20 @@ class OthersAlsoViewed extends React.Component {
           <FontAwesomeIcon onClick={this.nextPage} icon={faChevronCircleRight} size="2x" />
         </ButtonWrapper>
           <Carousel data={this.state.allItems} items={this.state.pages[this.state.page]}/>
-        <div>
-          Tracking line
-        </div>
+        <Line>
+          <TrackingLine
+            className={this.state.page === 1 ? 'currentPage' : ''}>
+          </TrackingLine>
+          <TrackingLine
+            className={this.state.page === 2 ? 'currentPage' : ''}>
+          </TrackingLine>
+          <TrackingLine
+            className={this.state.page === 3 ? 'currentPage' : ''}>
+          </TrackingLine>
+          <TrackingLine
+            className={this.state.page === 4 ? 'currentPage' : ''}>
+          </TrackingLine>
+        </Line>
       </Container>
     );
   };
