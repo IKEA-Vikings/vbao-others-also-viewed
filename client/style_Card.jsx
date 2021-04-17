@@ -5,6 +5,8 @@ import {FONT_SM, FONT_MED, FONT_LG, GRAY3} from './style_constants.js';
 export const Image = styled.img`
   width: 100%;
   margin-bottom: 1.75rem;
+  max-height: 300px;
+  max-width: 300px;
 `;
 
 export const Container = styled.li`
