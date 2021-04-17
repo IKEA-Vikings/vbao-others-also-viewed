@@ -32,7 +32,7 @@ function Card(props) {
 
   return (
     <Container key={`card-${id}`}>
-      <Heart><FontAwesomeIcon icon={["far", "heart"]} size="1em"/></Heart>
+      <Heart><FontAwesomeIcon icon={["far", "heart"]} size="1x"/></Heart>
       {data?.image ? <Image src={data?.image} /> : ''}
       <Brand>{data?.brand || 'Brand Name'}</Brand>
       <Name>{`${data?.category}, ${data?.title}` || 'Name'}</Name>
