@@ -1,0 +1,13 @@
+export const FONT = `'Noto Sans', 'Roboto', 'Open Sans', sans-serif`;
+export const GRAY3 = '#484848';
+export const WHITE = '#f5f5f5';
+export const GRAY2 = '#dfdfdf';
+export const OVERLAY = 'rgba(72, 72, 72, 0.1)';
+export const BLUE = '#0058a3';
+export const LAPTOP = '79.37em';
+export const LG_TABLET = '56.25em';
+export const SM_TABLET = '37.5em';
+export const MOBILE = '25.87em';
+export const SM_MOBILE = '23.43em';
+export const FONT_MED = '0.875rem';
+export const FONT_LG = '1rem';
