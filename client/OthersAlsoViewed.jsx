@@ -1,13 +1,17 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
-import {Container, Header} from './style_OthersAlsoViewed.jsx';
+import {Container, Header, Button, ButtonWrapper} from './style_OthersAlsoViewed.jsx';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faChevronCircleRight, faChevronCircleLeft} from '@fortawesome/free-solid-svg-icons';
 
 class OthersAlsoViewed extends React.Component {
   constructor(props) {
     super(props);
 
-    this.navigatePages = this.navigatePages.bind(this);
+    this.prevPage = this.prevPage.bind(this);
+    this.nextPage = this.nextPage.bind(this);
 
     this.state = {
       page: null,
@@ -124,17 +128,19 @@ class OthersAlsoViewed extends React.Component {
     this.setState(newState);
   }
 
-  navigatePages(e) {
-    let button = e.target.name;
-    let currentPage = this.state.props.page;
-    if (button === 'next' && currentPage !== 4) {
-      currentPage++;
-      this.setState({page: currentPage});
-    } else if (button === 'previous' && currentPage !== 1) {
+  prevPage(e) {
+    let currentPage = this.state.page;
+    if (currentPage !== 1) {
       currentPage--;
       this.setState({page: currentPage});
-    } else {
-      console.log('Button click conditions not met for some reason.');
+    }
+  }
+
+  nextPage(e) {
+    let currentPage = this.state.page;
+    if (currentPage !== 4) {
+      currentPage++;
+      this.setState({page: currentPage});
     }
   }
 
@@ -142,10 +148,10 @@ class OthersAlsoViewed extends React.Component {
     return(
       <Container>
         <Header>Others also viewed</Header>
-        <div>
-          <button name="previous" onClick={this.navigatePages}>Previous</button>
-          <button name="next" onClick={this.navigatePages}>Next</button>
-        </div>
+        <ButtonWrapper>
+          <FontAwesomeIcon icon={faChevronCircleLeft} size="2x" onClick={this.prevPage}/>
+          <FontAwesomeIcon onClick={this.nextPage} icon={faChevronCircleRight} size="2x" />
+        </ButtonWrapper>
           <Carousel data={this.state.allItems} items={this.state.pages[this.state.page]}/>
         <div>
           Tracking line
