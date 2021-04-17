@@ -10,3 +10,11 @@ export const Container = styled.div`
 export const Header = styled.h1`
   font-size: 1.5rem;
 `;
+
+export const ButtonWrapper = styled.div`
+  position: absolute;
+  top: 25%;
+  display: flex;
+  width: 98vw;
+  justify-content: space-between;
+`;

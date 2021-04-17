@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
-import {Container, Header, Button, ButtonWrapper} from './style_OthersAlsoViewed.jsx';
+import {Container, Header, ButtonWrapper} from './style_OthersAlsoViewed.jsx';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faChevronCircleRight, faChevronCircleLeft} from '@fortawesome/free-solid-svg-icons';
