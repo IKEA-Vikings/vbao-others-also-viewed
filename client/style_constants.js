@@ -11,3 +11,4 @@ export const MOBILE = '25.87em';
 export const SM_MOBILE = '23.43em';
 export const FONT_MED = '0.875rem';
 export const FONT_LG = '1rem';
+export const FONT_SM = '0.675rem';
