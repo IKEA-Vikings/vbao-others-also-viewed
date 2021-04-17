@@ -17,6 +17,10 @@ export const Brand = styled.h1`
   font-size: ${FONT_MED};
   margin: 0;
   margin-bottom: 0.25rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const Name = styled.h2`
@@ -28,9 +32,18 @@ export const Name = styled.h2`
 `;
 
 export const Price = styled.h2`
-  font-size: ${FONT_LG};
   margin: 0;
   margin-bottom: 0.5rem;
+`;
+
+export const Dollar = styled.span`
+  font-size: 1.5rem;
+  line-height: 0.9;
+`;
+
+export const Superscript = styled.sup`
+  font-size: 0.675rem;
+  line-height: 1.6;
 `;
 
 export const Reviews = styled.div`
@@ -38,14 +51,20 @@ export const Reviews = styled.div`
   justify-content: space-between;
   margin: 0;
   margin-bottom: 0.25rem;
+  vertical-align: center;
 `;
 
 export const Heart = styled.span`
   text-align: right;
   margin: 5px;
-  color: ${GRAY};
+  color: ${GRAY3};
 
   &:hover {
     color: black;
   }
+`;
+
+export const NumRating = styled.span`
+  color: ${GRAY3};
+  font-size: ${FONT_MED};
 `;
