@@ -14,8 +14,8 @@ export const Header = styled.h1`
 `;
 
 export const ButtonWrapper = styled.div`
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 30%;
   display: flex;
   width: 98vw;
   justify-content: space-between;
