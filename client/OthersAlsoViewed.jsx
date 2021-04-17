@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
-import {Container} from './style_OthersAlsoViewed.jsx';
+import {Container, Header} from './style_OthersAlsoViewed.jsx';
 
 class OthersAlsoViewed extends React.Component {
   constructor(props) {
@@ -141,7 +141,7 @@ class OthersAlsoViewed extends React.Component {
   render() {
     return(
       <Container>
-        <h1>Others also viewed</h1>
+        <Header>Others also viewed</Header>
         <div>
           <button name="previous" onClick={this.navigatePages}>Previous</button>
           <button name="next" onClick={this.navigatePages}>Next</button>
