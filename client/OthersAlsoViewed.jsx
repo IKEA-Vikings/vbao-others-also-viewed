@@ -168,16 +168,16 @@ class OthersAlsoViewed extends React.Component {
         </div>
         <Line>
           <TrackingLine
-            className={this.state.page === 1 ? 'oav-currentPage' : ''}>
+            isActive={this.state.page === 1}>
           </TrackingLine>
           <TrackingLine
-            className={this.state.page === 2 ? 'oav-currentPage' : ''}>
+            isActive={this.state.page === 2}>
           </TrackingLine>
           <TrackingLine
-            className={this.state.page === 3 ? 'oav-currentPage' : ''}>
+            isActive={this.state.page === 3}>
           </TrackingLine>
           <TrackingLine
-            className={this.state.page === 4 ? 'oav-currentPage' : ''}>
+            isActive={this.state.page === 4}>
           </TrackingLine>
         </Line>
       </Container>

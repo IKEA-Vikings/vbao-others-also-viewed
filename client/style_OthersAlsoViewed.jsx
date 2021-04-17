@@ -28,8 +28,5 @@ export const Line = styled.div`
 export const TrackingLine = styled.div`
   border-bottom: solid 2px ${GRAY2};
   width: 100%;
-
-  &.oas-currentPage {
-    border-color: ${GRAY3};
-  }
+  ${props => props.isActive && `border-color: ${GRAY3}`};
 `;
