@@ -29,7 +29,7 @@ export const TrackingLine = styled.div`
   border-bottom: solid 2px ${GRAY2};
   width: 100%;
 
-  &.currentPage {
+  &.oas-currentPage {
     border-color: ${GRAY3};
   }
 `;

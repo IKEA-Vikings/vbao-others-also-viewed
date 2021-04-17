@@ -152,19 +152,32 @@ class OthersAlsoViewed extends React.Component {
           <FontAwesomeIcon icon={faChevronCircleLeft} size="2x" onClick={this.prevPage}/>
           <FontAwesomeIcon onClick={this.nextPage} icon={faChevronCircleRight} size="2x" />
         </ButtonWrapper>
-          <Carousel data={this.state.allItems} items={this.state.pages[this.state.page]}/>
+        <div>
+          <div hidden={this.state.page !== 1}>
+            <Carousel data={this.state.allItems} items={this.state.pages[1]}/>
+          </div>
+          <div hidden={this.state.page !== 2}>
+            <Carousel data={this.state.allItems} items={this.state.pages[2]}/>
+          </div>
+          <div hidden={this.state.page !== 3}>
+            <Carousel data={this.state.allItems} items={this.state.pages[3]}/>
+          </div>
+          <div hidden={this.state.page !== 4}>
+            <Carousel data={this.state.allItems} items={this.state.pages[4]}/>
+          </div>
+        </div>
         <Line>
           <TrackingLine
-            className={this.state.page === 1 ? 'currentPage' : ''}>
+            className={this.state.page === 1 ? 'oav-currentPage' : ''}>
           </TrackingLine>
           <TrackingLine
-            className={this.state.page === 2 ? 'currentPage' : ''}>
+            className={this.state.page === 2 ? 'oav-currentPage' : ''}>
           </TrackingLine>
           <TrackingLine
-            className={this.state.page === 3 ? 'currentPage' : ''}>
+            className={this.state.page === 3 ? 'oav-currentPage' : ''}>
           </TrackingLine>
           <TrackingLine
-            className={this.state.page === 4 ? 'currentPage' : ''}>
+            className={this.state.page === 4 ? 'oav-currentPage' : ''}>
           </TrackingLine>
         </Line>
       </Container>
