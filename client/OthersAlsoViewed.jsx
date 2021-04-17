@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
+import {Container} from './style_OthersAlsoViewed.jsx';
 
 class OthersAlsoViewed extends React.Component {
   constructor(props) {
@@ -37,46 +38,88 @@ class OthersAlsoViewed extends React.Component {
       }
     }
 
-    // await data.map(async (itemId) => {
-    //   const response = await axios.get(`http://3.86.58.21:3003/api/product/${itemId}`);
-    //   const data = response.data;
-    //   allItems[itemId].brand = data.brand;
-    //   allItems[itemId].name = data.category;
-    //   allItems[itemId].color = data.color;
-    //   allItems[itemId].price = data.price;
-    // });
+    const mapToAllItems = (APIdata, storage) => {
+      if (!APIdata) return;
+      for (const item of APIdata) {
+        for (const key in item) {
+          if ( storage[item._id] && key !== 'id' && key !== '_id') {
+            storage[item._id][key] = item[key];
+          }
+        }
+      }
+    }
 
-    // await data.map(async (itemId) => {
-    //   const response = await axios.get(`http://54.67.28.46:3004/images/sizeService/${itemId}`);
-    //   const data = response.data[0];
-    //   allItems[itemId].image = data;
-    // });
+    const aboutPromiseChain = await data.map(async (itemID) => {
+      try {
+        const response = await axios.get(`http://ec2-3-86-58-21.compute-1.amazonaws.com:3003/api/product/${itemID}`);
+        const data = response.data;
+        let prep;
+        if (data) {
+          prep = {
+            _id: data._id,
+            brand: data.brand,
+            category: data.category,
+            price: data.price
+          };
+        }
+        return prep;
+      } catch {
+        return {
+          _id: itemID,
+          brand: null,
+          category: null,
+          price: null
+        };
+      }
+    });
 
-    // const dataCSV = data.join(',');
-    // const reviews = await axios.get(`http://100.25.191.161/api/reviews/${dataCSV}`);
-    // const reviewData = response.data;
-    // console.log(reviewData);
-    // for (const review of reviewData) {
-    //   const id = review._id || null;
-    //   if (id) {
-    //     allItems[id].ratingsAverage = review.average;
-    //     allItems[id].ratingsCount = review.number;
-    //   }
-    // }
+    const imagesPromiseChain = await data.map(async (itemID) => {
+      try {
+        const response = await axios.get(`http://54.67.28.46:3004/images/sizeService/${itemID}`);
+        const data = response.data[0];
+        let prep = {
+          _id: itemID,
+          image: data
+        };
+        return prep;
+      } catch {
+        return {
+          _id: itemID,
+          image: null
+        };
+      }
+    });
 
-    // await data.map(async (itemId) => {
-    //   const response = await axios.get(`http://100.25.191.161/api/reviews/${itemId}`);
-    //   const reviewData = response.data;
-    //   console.log(reviewData);
-    // });
+    const dataCSV = data.join(',');
+    const reviewsAPICall = await axios.get(`http://100.25.191.161/api/reviews/${dataCSV}`);
+    const reviewsPromiseChain = reviewsAPICall.data;
 
-    // await data.map(async (itemId) => {
-    //   const response = await axios.get(`http://18.221.34.3:3002/api/sizes/${itemId}`);
-    //   const data = response.data.title;
-    //   if (data) {
-    //     allItems[itemId].name = allItems[itemId].name + ', ' + data;
-    //   }
-    // });
+    const sizeDataPromiseChain = await data.map(async (itemID) => {
+      try {
+        const response = await axios.get(`http://18.221.34.3:3002/api/sizes/${itemID}`);
+        const data = response.data;
+        let prep = {
+          _id: data.id,
+          title: data.title
+        };
+        return prep;
+      } catch {
+        return {
+          _id: itemID,
+          title: null
+        };
+        return prep;
+      }
+    });
+
+    const about = await Promise.all(aboutPromiseChain);
+    const images = await Promise.all(imagesPromiseChain);
+    const reviews = await Promise.all(reviewsPromiseChain);
+    const sizeData = await Promise.all(sizeDataPromiseChain);
+
+    for (const api of [about, images, reviews, sizeData]) {
+      mapToAllItems(api, allItems);
+    }
 
     this.setState(newState);
   }
@@ -97,16 +140,17 @@ class OthersAlsoViewed extends React.Component {
 
   render() {
     return(
-      <div>
+      <Container>
+        <h1>Others also viewed</h1>
         <div>
           <button name="previous" onClick={this.navigatePages}>Previous</button>
           <button name="next" onClick={this.navigatePages}>Next</button>
         </div>
-        <Carousel data={this.state.allItems} items={this.state.pages[this.state.page]}/>
+          <Carousel data={this.state.allItems} items={this.state.pages[this.state.page]}/>
         <div>
           Tracking line
         </div>
-      </div>
+      </Container>
     );
   };
 }

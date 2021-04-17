@@ -28,7 +28,7 @@ function Card(props) {
 
   return (
     <Container key={`card-${id}`}>
-      <span><FontAwesomeIcon icon={["far", "heart"]} size="lg"/></span>
+      <Heart><FontAwesomeIcon icon={["far", "heart"]} size="sm"/></Heart>
       {data?.image ? <Image src={data?.image} /> : ''}
       <Brand>{data?.brand || 'Brand Name'}</Brand>
       <Name>{`${data?.category}, ${data?.title}` || 'Name'}</Name>

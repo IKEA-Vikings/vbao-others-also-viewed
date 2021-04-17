@@ -1,39 +1,26 @@
-import React from 'react';
-import axios from 'axios';
+import React, {useState, useEffect} from 'react';
+import Card from './Card.jsx';
+import {Container} from './style_Carousel.jsx';
 
 function Carousel(props) {
-  console.log('Carousel items list: ', props.items);
-  console.log('Carousel items data: ', props.data);
-  const products = props.items
-    ? props.items.map((product) => {
-      const image = props.data.product?.image
-        ? <img src={props.data.product.image} />
-        : '';
+  const [items, setItems] = useState(null);
+  const [data, setData] = useState(null);
 
-      return (
-        <li key={product}>
-          <span>Heart icon</span>
-          {image}
-          <h2>{props.data[product].brand || ''}</h2>
-          <h3>{props.data[product].name || ''}</h3>
-          <h1>{props.data[product].price || ''}</h1>
-          <div>
-            <span>{props.data[product].ratingsAverage || ''}</span>
-            <span>{props.data[product].ratingsCount || ''}</span>
-          </div>
-        </li>
-      );
+  useEffect(() => {
+    setItems(props.items);
+    setData(props.data);
+  }, [items, data, props]);
+
+  const products = items
+    ? items.map((itemID) => {
+      return <Card key={`carousel-${itemID}`} id={itemID} data={data[itemID]} />
     })
     : '';
 
   return(
-    <div>
-      <ul>
-        {products}
-      </ul>
-      <div>Items: {props.items}</div>
-      <div>Data: {JSON.stringify(props.data)}</div>
-    </div>
+    <Container>
+      {products}
+    </Container>
   );
 }
 
